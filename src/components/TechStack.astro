@@ -1,0 +1,31 @@
+---
+import Section from "./Section.astro";
+import type { TechStackProps } from "@types";
+
+interface Props {
+  techStack: TechStackProps;
+}
+
+const { techStack } = Astro.props;
+---
+
+<Section text={techStack.title} href="techstack">
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+    {
+      techStack.categories.map(({ name, items }) => (
+        <div class="rounded-lg border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-white/10">
+          <h3 class="mb-4 font-serif text-xl font-semibold text-primary">
+            {name}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {items.map((item) => (
+              <span class="rounded-full bg-white/10 px-3 py-1.5 text-sm text-white/90 transition-colors hover:bg-primary/20 hover:text-primary">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Section>

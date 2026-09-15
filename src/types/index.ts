@@ -13,6 +13,18 @@ export interface SiteContent {
   experience: ExperienceProps[];
   projects: ProjectProps[];
   about: AboutProps;
+  techStack: TechStackProps;
+  achievements: AchievementsProps;
+}
+
+export interface TechStackCategory {
+  name: string;
+  items: string[];
+}
+
+export interface TechStackProps {
+  title: string;
+  categories: TechStackCategory[];
 }
 
 export interface HeroProps {
@@ -28,6 +40,7 @@ export interface ExperienceProps {
   startDate: string;
   endDate: string;
   summary: string | string[];
+  technologies: string | string[];
 }
 
 export interface ProjectProps {
@@ -36,14 +49,28 @@ export interface ProjectProps {
   image: string;
   linkPreview?: string;
   linkSource?: string;
+  description: string;
 }
 
 export interface AboutProps {
   description: string;
   image: string;
+  skills: Object;
 }
 
 export interface HeaderProps {
   siteLogo: string;
   navLinks: { text: string; href: string }[];
+}
+
+export interface Achievement {
+  title: string;
+  description: string;
+  link?: string;
+  metric?: string; // e.g., "300+", "95%", "10K+"
+}
+
+export interface AchievementsProps {
+  title: string;
+  items: Achievement[];
 }

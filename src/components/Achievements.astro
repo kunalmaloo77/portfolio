@@ -1,0 +1,40 @@
+---
+import Section from "./Section.astro";
+import type { AchievementsProps } from "@types";
+
+interface Props {
+  achievements: AchievementsProps;
+}
+
+const { achievements } = Astro.props;
+---
+
+<Section text={achievements.title} href="achievements">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+    {
+      achievements.items.map(({ title, description, link, metric }) => (
+        <div class="group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-white/10">
+          {metric && (
+            <div class="mb-3 inline-block rounded-full bg-primary/20 px-3 py-1 font-serif text-2xl font-bold text-primary">
+              {metric}
+            </div>
+          )}
+          <h3 class="mb-2 font-serif text-xl font-semibold text-white">
+            {title}
+          </h3>
+          <p class="text-sm text-neutral">{description}</p>
+          {link && (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center text-sm text-primary transition-colors hover:text-primary/80"
+            >
+              View →
+            </a>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</Section>

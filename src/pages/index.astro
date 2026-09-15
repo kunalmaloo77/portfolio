@@ -5,6 +5,8 @@ import Layout from "@layouts/Layout.astro";
 import Experience from "@components/Experience.astro";
 import Projects from "@components/Projects.astro";
 import About from "@components/About.astro";
+import TechStack from "@components/TechStack.astro";
+import Achievements from "@components/Achievements.astro";
 
 import "../styles/global.css";
 ---
@@ -13,5 +15,7 @@ import "../styles/global.css";
   <Hero {...SITE_CONTENT.hero} />
   <Experience experience={SITE_CONTENT.experience} />
   <Projects projects={SITE_CONTENT.projects} />
+  <TechStack techStack={SITE_CONTENT.techStack} />
+  <Achievements achievements={SITE_CONTENT.achievements} />
   <About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
 </Layout>
